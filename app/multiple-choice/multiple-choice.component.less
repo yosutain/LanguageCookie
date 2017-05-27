@@ -1,0 +1,236 @@
+@import "./../colors";
+
+@multipleChoiceWidth: 50vw;
+#multipleChoice {
+	width: @multipleChoiceWidth;
+	height: 100vh;
+	background-color: rgba(50, 50, 50, 1);
+	display: grid;
+	grid-template-columns: @multipleChoiceWidth;
+	& div {
+		align-self: center;
+	}
+	grid-template-rows: repeat(10, (10vh));
+	& #characterChoices {
+		grid-row: 2;
+	}
+	& #chosenCharacter {
+		grid-row: 4 / span 2;
+	}
+	& #generateCharacterChoices {
+		grid-row: 7 / span 2;
+	}
+	& #multipleChoiceSettings {
+		grid-row: 9 / span 2;
+	}
+}
+
+@amountOfCharacters: 4;
+#characterChoices {
+	display: grid;
+	grid-template-columns: repeat(@amountOfCharacters, (@multipleChoiceWidth / @amountOfCharacters));
+	grid-template-rows: 50px;
+	& .characterChoice {
+		text-align: center;
+		font-size: 30px;
+		color: @yellow;
+		& .characterChoiceCharacter {
+			padding: 10px;
+			& h3 {
+				padding-top: 5px;
+				padding-bottom: 5px;
+				border-radius: 10px;
+				transition: 0.5s;
+				box-shadow: inset 0px 0px 1px 1px transparent;
+			}
+		}
+		&:hover {
+			& .characterChoiceCharacter h3 {
+				background-color: darken(@blue, 50%);
+				box-shadow: inset 0px 0px 1px 1px @blue;
+			}
+		}
+		& .selectionMade.selectedCharacter {
+			color: @red;
+			&.correctCharacter {
+				color: @green;
+			}
+		}
+		& .selectionMade.correctCharacter {
+			color: fade(@green, 60%);
+		}
+		& .romanizedCharacter {
+			visibility: hidden;
+			&.selectionMade {
+				visibility: visible;
+				opacity: 0.7;
+			}
+		}
+		& .keyboardShortcutKey {
+			opacity: 0.7;
+			width: 20px;
+			height: 20px;
+			line-height: 20px;
+			font-size: 14px;
+			color: @yellow;
+			box-shadow: 0px 0px 1px 1px fade(@magenta, 50%);
+			border-radius: 100%;
+			margin: 0px auto 10px auto;
+		}
+	}
+}
+
+#chosenCharacter {
+	width: @multipleChoiceWidth;
+	font-size: 30px;
+	color: @yellow;
+	text-align: center;
+	& .selectionMade{
+		color: @red;
+		&.correctCharacter {
+			color: @green;
+		}
+	}	
+}
+
+#generateCharacterChoices {
+	margin: auto;
+	font-size: 30px;
+	color: @yuzu;
+	text-align: center;
+	& .keyboardShortcutKey {
+		opacity: 0.7;
+		width: 80px;
+		height: 20px;
+		line-height: 20px;
+		font-size: 14px;
+		box-shadow: 0px 0px 1px 1px fade(@magenta, 50%);
+		color: fade(@yellow, 100%);
+		border-radius: 20px;
+		margin: 0px auto 10px auto;
+	}
+	& .generateCharacterChoicesButton:hover {
+		opacity: 0.6;
+	}
+}
+
+#multipleChoiceSettings {
+	width: @multipleChoiceWidth;
+	display: grid;
+	grid-template-columns: repeat(3, (@multipleChoiceWidth / 3));
+	grid-template-rows: 20px 60px;
+}
+.multipleChoiceSettingsTitle {
+	text-align: center;
+	color: @yuzu;
+}
+
+#changeCharacterSelection {
+	text-align: center;
+	margin: auto;
+	display: flex;
+}
+
+.checkMark {
+	fill:none;
+	stroke:black;
+	stroke-linecap:round;
+	stroke-linejoin:round;
+	stroke-width:3;
+}
+
+#configureCharacterSubSet {
+	padding: 10px;
+	height: 30px;
+	width: 30px;
+	overflow: hidden;
+	&:hover .cogWheelIcon {
+		fill: @magenta;
+	}
+}
+
+.cogWheelIcon {
+	height: 64px;
+	width: 64px;
+	fill: @yuzu;
+	transform-origin: top left;
+	transform: scale(0.46);
+}
+
+#setCharacterSubSet{
+	padding: 10px;
+	&:hover{
+		& .toggleCheckBox {
+			box-shadow: inset 0 0 0 2px @magenta;
+		}
+		& .toggledOn{
+			background-color: @magenta;
+		}
+		& .toggledOff .checkMark{
+			stroke: @magenta;
+		}
+	}
+	& .toggleCheckBox {
+		width: 30px;
+		height: 30px;
+		border-radius: 30px;
+		box-shadow: inset 0 0 0 2px @yuzu;
+		& .toggleCheckMark {
+			padding-left: 0px;
+			padding-top: 10px;
+		}
+	}
+	& .toggledOn{
+		border-radius: 30px;
+		background-color: @yuzu;
+		& .checkMark {
+			stroke: rgba(50, 50, 50, 1);
+		}
+		display: none;
+	}
+	& .toggledOff{
+		& .checkMark {
+			stroke: @yuzu;
+		}
+		display: block;
+	}
+	&.toggledOn {
+		& .toggledOn{
+			display: block;
+		}
+		& .toggledOff{
+			display: none;
+		}
+	}
+}
+
+#changeChoiceAndAnswerType {
+	font-size: 30px;
+	color: @yuzu;
+	text-align: center;
+	margin: auto;
+	display: flex;
+	.changeChoiceAndAnswerType {
+		padding: 10px;
+	}
+	& .selectedChoiceAndAnswerType {
+		color: @magenta;
+	}
+	& .changeChoiceAndAnswerType:hover {
+		opacity: 0.6;
+	}
+}
+
+#changeAmountOfCharacters {
+	font-size: 30px;
+	color: @yuzu;
+	text-align: center;
+	display: grid;
+	grid-template-columns: repeat(5, 20%);
+	& .selectedAmount {
+		color: @magenta;
+	}
+	& .changeAmountOfCharacters:hover {
+		opacity: 0.6;
+	}
+}

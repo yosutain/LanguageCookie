@@ -1,0 +1,47 @@
+@import "./../colors";
+
+@libraryWidth: 50vw;
+
+#characterDetails {
+	width: calc(~"100vw - @{libraryWidth} - 200px");
+	height: 100vh;
+	background-color: @blue;
+	color: rgba(0, 0, 0, 0.8);
+	display: grid;
+	grid-template-rows: 150px 150px;
+	grid-auto-rows: 70px;
+	border-left: 5px solid rgba(0, 0, 0, 0.5);
+	& > div:nth-child(1n+2) {
+		border-top: 1px solid rgba(50, 50, 50, 1);
+	}
+	& .character,
+	& .romanized,
+	& .characterDetailIPA {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		& div:first-child {
+			line-height: 50px;
+			font-size: 20px;
+			padding-left: 20px;
+		}
+		& div:last-child {
+			line-height: 150px;
+			font-size: 50px;
+			text-align: center;
+		}
+	}
+	& .aspiration,
+	& .pronounciation {
+		display: grid;
+		grid-template-columns: 1fr 2fr;
+		text-align: left;
+		& div:first-child {
+			font-size: 20px;
+			padding: 20px;
+		}
+		& div:last-child {
+			padding: 20px;
+			font-size: 30px;
+		}
+	}
+}

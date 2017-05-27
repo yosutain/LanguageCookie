@@ -1,0 +1,49 @@
+@import "./../colors";
+
+@libraryWidth: 50vw;
+
+#library {
+	width: @libraryWidth;
+	height: 100vh;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	margin-right: -100px;
+	padding-right: 100px;
+	background-color: rgba(50, 50, 50, 1);
+	color: @yuzu;
+	display: grid;
+	grid-template-columns: repeat(5, (@libraryWidth / 5));
+	grid-auto-rows: 50px;
+	& h1 {
+		grid-column: span 5;
+		height: 50px;
+		line-height: 50px;
+		font-size: 20px;
+		padding-left: 20px;
+	}
+}
+
+.libraryCharacter {
+	display: flex;
+	flex-direction: row;
+	&:hover {
+		color: @magenta;
+	}
+	& div {
+		height: 50px;
+		line-height: 50px;
+		font-size: 24px;
+		&.character {
+			width: (@libraryWidth / 5) * 0.4;
+			text-align: right;
+		}
+		&.separator {
+			width: (@libraryWidth / 5) * 0.2;
+			text-align: center;
+		}
+		&.romanized {
+			width: (@libraryWidth / 5) * 0.4;
+			text-align: left;
+		}
+	}
+}

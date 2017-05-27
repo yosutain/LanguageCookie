@@ -1,0 +1,67 @@
+<section id="sidebar">
+	<div class="sidebarHeader">
+		<h1>
+		Choose Mode
+		</h1>
+	</div>
+
+	<div class="sidebarRow" [class.selected]="selectedGameId == 1">
+		<h1 (click)="selectGame(1)">
+		Library
+		</h1>
+	</div>
+
+	<div class="sidebarRow" [class.selected]="selectedGameId == 2">
+		<h1 (click)="selectGame(2)">
+		Practice
+		</h1>
+	</div>
+
+	<div class="sidebarHeader">
+		<h1>
+		Choose Characters
+		</h1>
+	</div>
+
+	<div class="sidebarRow" [class.selected]="selected == 1">
+		<h1 (click)="selectCharacterSet(1)">
+		Hiragana
+		</h1>
+	</div>
+
+	<div class="sidebarRow" [class.selected]="selected == 2">
+		<h1 (click)="selectCharacterSet(2)">
+		Katakana
+		</h1>
+	</div>
+
+	<div class="sidebarRow" [class.selected]="selected === 3">
+		<h1 (click)="selectCharacterSet(3)">
+		Hangul
+		</h1>
+	</div>
+
+	<div class="sidebarRow" [class.selected]="selected === 4">
+		<h1 (click)="selectCharacterSet(4)">
+		Futhark
+		</h1>
+	</div>
+
+	<div class="sidebarRow" [class.selected]="selected === 5">
+		<h1 (click)="selectCharacterSet(5)">
+		Sanskrit
+		</h1>
+	</div>
+
+	<div class="sidebarRow" [class.selected]="selected === 6">
+		<h1 (click)="selectCharacterSet(6)">
+		Cyrillic
+		</h1>
+	</div>
+
+	<div class="sidebarRow" [class.selected]="selected === 7">
+		<h1 (click)="selectCharacterSet(7)">
+		Thai
+		</h1>
+	</div>
+</section>

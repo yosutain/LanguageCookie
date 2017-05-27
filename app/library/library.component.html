@@ -1,0 +1,14 @@
+<section id="library">
+	<div *ngFor="let character of characters" class="libraryCharacter"
+	(click)="selectCharacter(character.id)">
+		<div class="character">
+			{{character.character}}
+		</div>
+		<div *ngIf="character.id > 0" class="separator">
+			=
+		</div>
+		<div class="romanized">
+			{{character.romanized}}	
+		</div>
+	</div>
+</section>

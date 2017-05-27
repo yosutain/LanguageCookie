@@ -1,0 +1,27 @@
+<section id="characterDetails">
+	<div *ngIf="character.id > 0" class="character">
+		<div>Character:</div>
+		<div>{{character.character}}</div>
+	</div>
+
+	<div *ngIf="character.id > 0 && !character.ipa" class="romanized">
+		<div>Romanization:</div>
+		<div>{{character.romanized}}</div>	
+	</div>
+
+	<div *ngIf="character.id > 0 && character.ipa" class="characterDetailIPA">
+		<div>IPA:</div>
+		<div>{{character.ipa}}</div>	
+	</div>
+
+	<div *ngIf="character.aspirate == true || character.aspirate == false" class="aspiration">
+		<div>Aspiration:</div>
+		<div *ngIf="character.aspirate == true">Yes</div>
+		<div *ngIf="character.aspirate == false">No</div>	
+	</div>
+
+	<div *ngIf="character.pronounciation" class="pronounciation">
+		<div>Prounciation:</div>
+		<div>{{character.pronounciation}}</div>	
+	</div>
+</section>

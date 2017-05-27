@@ -1,0 +1,96 @@
+<section id="popupManager" (click)="closePopup('all', $event)">
+	<div id="selectCharacterSubSet">
+		<div id="selectCharacterSubSetLibraryWrapper">
+			<div id="selectCharacterSubSetLibrary">
+
+			<div class="subSetLibraryCharacterTopLeftSelector"></div>
+
+			<div class="subSetLibraryCharacterColumnSelector"> 
+				<div class="subSetLibraryCharacterColumnSelectorIconContainer"
+				(click)="toggleCharacterSubSetCharacterColumn(0)"
+				[class.entireColumnIsSelected]="entireColumnIsSelected(0) == true">
+					<svg height="14" width="14">
+						<polyline points="1 5, 5 9, 13 0"
+						class="checkMark" />
+					</svg> 
+				</div>
+			</div>
+
+			<div class="subSetLibraryCharacterColumnSelector"> 
+				<div class="subSetLibraryCharacterColumnSelectorIconContainer"
+				(click)="toggleCharacterSubSetCharacterColumn(1)"
+				[class.entireColumnIsSelected]="entireColumnIsSelected(1) == true">
+					<svg height="14" width="14">
+						<polyline points="1 5, 5 9, 13 0"
+						class="checkMark" />
+					</svg> 
+				</div>
+			</div>
+
+			<div class="subSetLibraryCharacterColumnSelector">
+				<div class="subSetLibraryCharacterColumnSelectorIconContainer"
+				(click)="toggleCharacterSubSetCharacterColumn(2)"
+				[class.entireColumnIsSelected]="entireColumnIsSelected(2) == true">
+					<svg height="14" width="14">
+						<polyline points="1 5, 5 9, 13 0"
+						class="checkMark" />
+					</svg> 
+				</div>
+			</div>
+
+			<div class="subSetLibraryCharacterColumnSelector">
+				<div class="subSetLibraryCharacterColumnSelectorIconContainer"
+				(click)="toggleCharacterSubSetCharacterColumn(3)"
+				[class.entireColumnIsSelected]="entireColumnIsSelected(3) == true">
+					<svg height="14" width="14">
+						<polyline points="1 5, 5 9, 13 0"
+						class="checkMark" />
+					</svg> 
+				</div>
+			</div>
+			
+			<div class="subSetLibraryCharacterColumnSelector">
+				<div class="subSetLibraryCharacterColumnSelectorIconContainer"
+				(click)="toggleCharacterSubSetCharacterColumn(4)"
+				[class.entireColumnIsSelected]="entireColumnIsSelected(4) == true">
+					<svg height="14" width="14">
+						<polyline points="1 5, 5 9, 13 0"
+						class="checkMark" />
+					</svg> 
+				</div>
+			</div>
+
+			<div *ngFor="let row of rows; let index = index;" 
+			class="subSetLibraryCharacterRowSelector">
+				<div class="subSetLibraryCharacterRowSelectorIconContainer"
+				(click)="toggleCharacterSubSetCharacterRow(index)"
+				[class.entireRowIsSelected]="entireRowIsSelected(index) == true">
+					<svg height="14" width="14">
+						<polyline points="1 5, 5 9, 13 0"
+						class="checkMark" />
+					</svg> 
+				</div>
+			</div>
+
+			<div *ngFor="let character of characters; let index = index;" 
+			class="subSetLibraryCharacter" 
+			[class.characterSubSetCharacter]="characterSubSetCharacter(index).id > 0"
+			(click)="toggleCharacterSubSetCharacter(index)">
+					<div class="character">
+						{{character.character}}
+					</div>
+					<div class="romaji">
+						{{character.romanized}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="closeAllPopups">
+		<svg height="24" width="24" class="closeAllPopups">
+			<polyline points="0 0, 24 24" class="closeAllPopups"/>
+			<polyline points="24 0, 0 24" class="closeAllPopups"/>
+		</svg> 
+	</div>
+</section>

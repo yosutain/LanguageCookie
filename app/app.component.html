@@ -1,0 +1,28 @@
+<div id="appComponent">
+	<app-sidebar 
+	(selectedCharacterSet)="selectCharacterSet($event)"
+	(selectedGame)="selectGame($event)">
+	</app-sidebar>
+
+	<app-library *ngIf="selectedGameId == 1"
+	[characters]="characters" 
+	(selectedCharacter)="selectCharacter($event)">
+	</app-library>
+
+	<app-character-details [character]="character">
+	</app-character-details>
+
+	<app-multiple-choice *ngIf="selectedGameId == 2"
+	[characters]="characters"
+	[characterSubSet]="characterSubSet"
+	(selectedCharacter)="selectCharacter($event)"
+	(selectedPopup)="openPopup($event)">
+	</app-multiple-choice>
+
+	<app-popup-manager *ngIf="popup == 'selectCharacterSubSet'"
+	[characters]="characters"
+	[characterSubSet]="characterSubSet"
+	(updatedCharacterSubSet)="updateCharacterSubSet($event)"
+	(closeAllPopups)="openPopup($event)">
+	</app-popup-manager>
+</div>

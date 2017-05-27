@@ -1,0 +1,123 @@
+<section id="multipleChoice" (keyup)="keyHandler($event)">
+	<div id="characterChoices">
+		<div *ngFor="let character of characterChoices; let index = index;" 
+		class="characterChoice" (click)="selectCharacter(character)">
+			<h6 class="keyboardShortcutKey">{{index + 1}}</h6>
+			<div class="characterChoiceCharacter"
+			[class.selectionMade]="answerCharacter.id > 0"
+			[class.selectedCharacter]="answerCharacter.id == character.id"
+			[class.correctCharacter]="character.romanized == correctCharacter.romanized">
+				<h3 *ngIf="choiceAndAnswerType == 1">{{character.character}}</h3>
+				<h3 *ngIf="choiceAndAnswerType == 2">{{character.romanized}}</h3>
+			</div>
+			<h4 class="romanizedCharacter"
+			[class.selectionMade]="answerCharacter.id > 0"
+			[class.selectedCharacter]="answerCharacter.id == character.id"
+			[class.correctCharacter]="character.romanized == correctCharacter.romanized">
+				<span *ngIf="choiceAndAnswerType == 1">{{character.romanized}}</span>
+				<span *ngIf="choiceAndAnswerType == 2">{{character.character}}</span>
+			</h4>
+		</div>
+	</div>
+
+	<div id="chosenCharacter">
+		<h3 
+		[class.selectionMade]="answerCharacter.id > 0"
+		[class.correctCharacter]="answerCharacter.romanized == correctCharacter.romanized">
+			<span *ngIf="choiceAndAnswerType == 1">{{correctCharacter.romanized}}</span>
+			<span *ngIf="choiceAndAnswerType == 2">{{correctCharacter.character}}</span>
+		</h3>
+	</div>
+
+	<div id="generateCharacterChoices" (click)="generateCharacterChoices()">
+		<h6 class="keyboardShortcutKey">Space</h6>
+		<h5 class="generateCharacterChoicesButton">NEXT</h5>
+	</div>
+
+	<div id="multipleChoiceSettings">
+		<h3 class="multipleChoiceSettingsTitle">Choice Type</h3>
+		<h3 class="multipleChoiceSettingsTitle">Amount of Choices</h3>
+		<h3 class="multipleChoiceSettingsTitle">Use Subset</h3>
+
+		<div id="changeChoiceAndAnswerType">
+			<div class="changeChoiceAndAnswerType" 
+			[class.selectedChoiceAndAnswerType]="choiceAndAnswerType == 1"
+			(click)="changeChoiceAndAnswerType(1)">
+				あ
+			</div>
+			<div class="changeChoiceAndAnswerType" 
+			[class.selectedChoiceAndAnswerType]="choiceAndAnswerType == 2"
+			(click)="changeChoiceAndAnswerType(2)">
+				a
+			</div>
+		</div>
+
+		<div id="changeAmountOfCharacters">
+			<div class="changeAmountOfCharacters" 
+			[class.selectedAmount]="amountOfChoices == 3"
+			(click)="changeAmountOfCharacters(3)">
+				3
+			</div>
+			<div class="changeAmountOfCharacters" 
+			[class.selectedAmount]="amountOfChoices == 4"
+			(click)="changeAmountOfCharacters(4)">
+				4
+			</div>
+			<div class="changeAmountOfCharacters" 
+			[class.selectedAmount]="amountOfChoices == 5"
+			(click)="changeAmountOfCharacters(5)">
+				5
+			</div>
+			<div class="changeAmountOfCharacters" 
+			[class.selectedAmount]="amountOfChoices == 6"
+			(click)="changeAmountOfCharacters(6)">
+				6
+			</div>
+			<div class="changeAmountOfCharacters" 
+			[class.selectedAmount]="amountOfChoices == 7"
+			(click)="changeAmountOfCharacters(7)">
+				7
+			</div>
+		</div>
+
+		<div id="changeCharacterSelection">
+			<div id="setCharacterSubSet" 
+			[class.toggledOn]="useCharacterSubSet == true"
+			(click)="setCharacterSubSet()">
+				<div class="toggledOff">
+					<div class="toggleCheckBox">
+						<div class="toggleCheckMark">
+
+							<svg height="14" width="14">
+								<polyline points="1 5, 5 9, 13 0"
+								class="checkMark" />
+							</svg>
+
+						</div>
+					</div>
+				</div>
+				
+				<div class="toggledOn">
+					<div class="toggleCheckBox">
+						<div class="toggleCheckMark">
+
+							<svg height="14" width="14">
+								<polyline points="1 5, 5 9, 13 0"
+								class="checkMark" />
+							</svg>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="configureCharacterSubSet" (click)="openPopup('selectCharacterSubSet')">
+
+				<svg class="cogWheelIcon">
+				  <path d="M 26.177402229270378 0 L 37.82259777072962 0 L 40.4222463348055 8.46139837042448 A 25 25 0 0 1 48.17390381337144 12.9368199023403 L 56.80151403573723 10.957482414529505 L 62.62411180646686 21.042517585470495 L 56.59615014817693 27.524578468084183 A 25 25 0 0 1 56.59615014817693 36.47542153191581 L 62.62411180646686 42.95748241452951 L 56.80151403573723 53.04251758547049 L 48.17390381337144 51.063180097659696 A 25 25 0 0 1 40.4222463348055 55.538601629575524 L 37.82259777072962 64 L 26.177402229270378 64 L 23.5777536651945 55.538601629575524 A 25 25 0 0 1 15.826096186628568 51.0631800976597 L 7.1984859642627725 53.04251758547049 L 1.3758881935331497 42.95748241452951 L 7.403849851823061 36.47542153191581 A 25 25 0 0 1 7.403849851823065 27.524578468084183 L 1.3758881935331524 21.042517585470492 L 7.198485964262778 10.957482414529501 L 15.826096186628561 12.9368199023403 A 25 25 0 0 1 23.5777536651945 8.46139837042448 M 32 16 A 16 16 0 0 0 32 48 A 16 16 0 0 0 32 16"></path>
+				</svg>
+
+			</div>
+		</div>
+	</div>
+</section>
